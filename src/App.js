@@ -1,25 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import { Table } from './Components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class  App  extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      numCols: 5,
+      numRows: 2, 
+      cellColor: "b"
+    }
+  }
+
+  addRow = () => {
+    this.setState({ numRows: this.state.numRows + 1})
+  }
+
+  addCol = () => {
+    this.setState({ numCols: this.state.numCols + 1})
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <div className="bar">
+          <ul >
+            <button class="btn" onClick={this.addCol}> Add Row </button>
+            <button class="btn" onClick={this.addRow}> Add Column </button>
+            <button class="btn" > Remove Row </button>
+            <button class="btn" > Remove Column </button>
+            <select class="drop-down"> 
+              <option>Blue</option>
+              <option>White</option>
+              <option>Yellow</option>
+              <option>Green</option>
+              <option>Pink</option>
+              <option>Orange</option>
+              <option>Purple</option> 
+            </select>
+          </ul>	
+        </div>
+        <Table numRows={this.state.numRows} numCols={this.state.numCols}/>
+      </div>
+    )
+  }
 }
-
-export default App;
