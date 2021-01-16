@@ -7,7 +7,7 @@ export default class  App  extends Component {
     super(props)
     this.state = {
       numCols: 5,
-      numRows: 2, 
+      numRows: 5, 
       cellColor: "b"
     }
   }
@@ -20,6 +20,14 @@ export default class  App  extends Component {
     this.setState({ numCols: this.state.numCols + 1})
   }
 
+  delCol = () => {
+    this.setState({ numCols: this.state.numCols - 1})
+  }
+
+  delRow = () => {
+    this.setState({ numRows: this.state.numRows - 1})
+  }
+
   render(){
     return (
       <div className="App">
@@ -27,8 +35,8 @@ export default class  App  extends Component {
           <ul >
             <button class="btn" onClick={this.addCol}> Add Row </button>
             <button class="btn" onClick={this.addRow}> Add Column </button>
-            <button class="btn" > Remove Row </button>
-            <button class="btn" > Remove Column </button>
+            <button class="btn" onClick={this.delCol}> Remove Row </button>
+            <button class="btn" onClick={this.delRow}> Remove Column </button>
             <select class="drop-down"> 
               <option>Blue</option>
               <option>White</option>
